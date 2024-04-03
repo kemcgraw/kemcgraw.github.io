@@ -1,22 +1,77 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en-US">
-<html>
 <head>
-<style>
-h1 {
-  color: black;
-  font-family: verdana;
-  font-size: 100%;
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katlyn E McGraw</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+        .menu {
+            flex-grow: 1;
+            background-color: #ddd;
+            padding: 20px;
+            width: 200px;
+            position: fixed;
+            left: 0;
+            top: 70px; /* Adjust top position based on the height of the header */
+            bottom: 0;
+        }
+        .content {
+            margin-left: 220px; /* Adjust based on the width of the menu */
+            padding: 20px;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f2f2f2;
+        }
+        .footer a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 10px;
+        }
+    </style>
 </head>
 <body>
-  <title>Katlyn E McGraw</title>
-  <body>
-    <h1 style="text-align:center;> Katlyn E McGraw </h1>
-    <a href="https://www.linkedin.com/in/katlynemcgraw/"target="_blank">LinkedIn</a>
-    <a href="https://scholar.google.com/citations?user=hFLMYI0AAAAJ&hl=en"target="_blank">Google Scholar</a>
-    <a href="https://github.com/kemcgraw"target="_blank">GitHub</a>
-    <a href="https://orcid.org/0000-0003-1143-3920"target="_blank">ERA Commons</a>
-    <a href="https://www.ncbi.nlm.nih.gov/myncbi/1JAKKbYlAf_5H/bibliography/public/"target="_blank">PubMed</a>
-  </body>
+    <div class="container">
+        <div class="header">
+            <h1>Katlyn E McGraw</h1>
+        </div>
+        <div class="menu">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="#">Katlyn E McGraw</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Research</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h2>Welcome to My Website</h2>
+            <p>This is the main content area where you can showcase your information.</p>
+        </div>
+        <div class="footer">
+            <a href="https://www.linkedin.com/in/katlynemcgraw/"target="_blank">LinkedIn</a>
+            <a href="https://scholar.google.com/citations?user=hFLMYI0AAAAJ&hl=en"target="_blank">Google Scholar</a>
+            <a href="https://github.com/kemcgraw"target="_blank">GitHub</a>
+            <a href="https://orcid.org/0000-0003-1143-3920"target="_blank">ERA Commons</a>
+            <a href="https://www.ncbi.nlm.nih.gov/myncbi/1JAKKbYlAf_5H/bibliography/public/"target="_blank">PubMed</a>
+        </div>
+    </div>
+</body>
 </html>
