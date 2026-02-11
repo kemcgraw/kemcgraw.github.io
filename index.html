@@ -1,100 +1,745 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katlyn E McGraw</title>
-        <style>
-        body {
-            font-family: Arial, sans-serif;
+    <title>Katlyn E McGraw, PhD - Academic Portfolio</title>
+    <link href="" rel="stylesheet">
+    <style>
+        :root {
+            --color-ink: #1a1a1a;
+            --color-paper: #fafaf8;
+            --color-accent: #8b4513;
+            --color-accent-light: #d4a574;
+            --color-muted: #666666;
+            --color-border: #e0dfd8;
+            --serif: 'Playfair Display', serif;
+            --sans: 'Source Sans 3', sans-serif;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        .container {
+
+        body {
+            font-family: var(--sans);
+            background: var(--color-paper);
+            color: var(--color-ink);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
             width: 100%;
-            text-align: center;
+            background: rgba(250, 250, 248, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 1000;
+            animation: slideDown 0.6s ease-out;
         }
-        .header {
-            color: black; /* Set header text color */
-            padding: 20px;
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .menu-toggle {
-            cursor: pointer;
-            margin-right: 10px;
+
+        .logo {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            letter-spacing: -0.5px;
         }
-        .menu-toggle .bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background-color: white;
-            margin: 5px auto;
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
         }
-        .menu {
-            background-color: #333; /* Set menu background color */
-            color: white; /* Set menu text color */
-            padding: 20px;
-            display: none;
-        }
-        .menu ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .menu li {
-            margin-bottom: 10px;
-        }
-        .menu li a {
-            color: white;
+
+        .nav-links a {
             text-decoration: none;
+            color: var(--color-ink);
+            font-weight: 400;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
         }
-        .footer {
-            background-color: #333; /* Set footer background color */
-            color: white; /* Set footer text color */
-            padding: 20px;
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 100px;
+            padding: 6rem 2rem 4rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-family: var(--serif);
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero-content .affiliation {
+            color: var(--color-muted);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 2px;
+            box-shadow: 20px 20px 0 var(--color-accent-light);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image img:hover {
+            transform: translate(-5px, -5px);
+        }
+
+        /* Biography */
+        .biography {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+        }
+
+        .section-title {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--color-accent);
+        }
+
+        .bio-text {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+
+        .interests, .education {
+            margin-top: 3rem;
+        }
+
+        .interests h3, .education h3 {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+        }
+
+        .interests ul, .education ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .interests li, .education li {
+            padding: 0.5rem 0;
+            border-left: 2px solid var(--color-accent-light);
+            padding-left: 1rem;
+        }
+
+        .education li {
+            border-left: 2px solid var(--color-border);
+        }
+
+        .education .degree {
+            font-weight: 600;
+            color: var(--color-ink);
+        }
+
+        .education .institution {
+            color: var(--color-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Projects Grid */
+        .projects {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.6s forwards;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            border: 1px solid var(--color-border);
+            background: white;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--color-accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-family: var(--serif);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--color-muted);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            text-decoration: none;
+            padding: 0.4rem 1rem;
+            border: 1px solid var(--color-accent);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        /* Posts Section */
+        .posts {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.8s forwards;
+        }
+
+        .post-list {
+            margin-top: 3rem;
+            display: grid;
+            gap: 2rem;
+        }
+
+        .post-item {
+            border-left: 3px solid var(--color-accent-light);
+            padding-left: 2rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .post-item:hover {
+            border-color: var(--color-accent);
+        }
+
+        .post-date {
+            font-size: 0.85rem;
+            color: var(--color-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-title {
+            font-family: var(--serif);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-title a {
+            color: var(--color-ink);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .post-title a:hover {
+            color: var(--color-accent);
+        }
+
+        .post-excerpt {
+            color: var(--color-muted);
+        }
+
+        /* Publications */
+        .publications {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 1s forwards;
+        }
+
+        .publication-item {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .publication-item:last-child {
+            border-bottom: none;
+        }
+
+        .pub-title {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--color-ink);
+        }
+
+        .pub-authors {
+            color: var(--color-muted);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .pub-venue {
+            font-style: italic;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .pub-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .pub-link {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            text-decoration: none;
+            padding: 0.3rem 0.8rem;
+            border: 1px solid var(--color-accent-light);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .pub-link:hover {
+            background: var(--color-accent-light);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-ink);
+            color: var(--color-paper);
+            padding: 3rem 2rem;
+            margin-top: 6rem;
             text-align: center;
         }
-        .footer a {
-            color: white; /* Set footer link color */
-            text-decoration: none;
-            margin: 0 10px;
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        @media screen and (max-width: 768px) {
-            .menu {
-                display: block;
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--color-accent-light);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            color: var(--color-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 4rem 2rem 2rem;
             }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image {
+                order: -1;
+                display: flex;
+                justify-content: center;
+            }
+
+            .hero-image img {
+                max-width: 300px;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-        <div class="header">
-            <h1>Katlyn E McGraw</h1>
-            <ul class="topnav" id="myTopnav">
-                <li><a href="https://www.linkedin.com/in/katlynemcgraw/" target="_blank">LinkedIn</a><li>
-                <li><a href="https://github.com/kemcgraw/" target="_blank">GitHub</a><li>
-                <li><a href="https://www.ncbi.nlm.nih.gov/myncbi/1JAKKbYlAf_5H/bibliography/public/" target="_blank">PubMed</a><li>
-                <li><a href="https://scholar.google.com/citations?user=hFLMYI0AAAAJ&hl=en"target="_blank">Google Scholar</a><li>
-                <li><a href="https://orcid.org/0000-0003-1143-3920" target="_blank">ERA Commons</a><li>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Katlyn E McGraw, PhD</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#publications">Publications</a></li>
             </ul>
         </div>
-    </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Name</h1>
+            <div class="subtitle">Research Scientist</div>
+            <div class="affiliation">Columbia University Mailman School of Public Health</div>
+            <p style="margin-top: 1rem; font-size: 1.05rem;">Researcher, epidemiologist, and proponent of actionable science.</p>
+        </div>
+        <div class="hero-image">
+            <img src="" alt="Profile Photo">
+        </div>
+    </section>
+
+    <section id="about" class="biography">
+        <h2 class="section-title">Biography</h2>
+        <div class="bio-text">
+            <p>Welcome to my academic portfolio. I am a postdoctoral research scientist in the Department of Environmental Health Sciences at Columbia University Mailman School of Public Health, where my research focuses on the cardiovascular impacts from under regulated pollutants and toxic chemicals. I am passionate about advancing actionable science, applying and interpreting advanced statistical methods, and mentoring the next generation of researchers.</p>
+            
+            <p style="margin-top: 1rem;">My work spans multiple areas including cardiovascular disease, tobacco and cannabis use, environmental exposures, and public health. I am committed to making research more transparent, accessible, and reproducible through the development of open-source tools and educational resources.</p>
+        </div>
+
+        <div class="interests">
+            <h3>Research Interests</h3>
+            <ul>
+                <li>Cardiovascular epidemiology</li>
+                <li>Machine Learning</li>
+                <li>Causal Inference</li>
+                <li>Longitudinal Data</li>
+                <li>Environmental Exposures</li>
+            </ul>
+        </div>
+
+        <div class="education">
+            <h3>Education</h3>
+            <ul>
+                <li>
+                    <div class="degree">Postdoctoral Fellowship in Environmental Epidemiology, Machine Learning, and Data Science, 2025</div>
+                    <div class="institution">Columbia University</div>
+                </li>
+                <li>
+                    <div class="degree">PhD in Public Health and Information Sciences, 2021</div>
+                    <div class="institution">University of Louisville</div>
+                </li>
+                <li>
+                    <div class="degree">MPH in Public Health and Information Sciences, 2016</div>
+                    <div class="institution">University Name</div>
+                </li>
+                <li>
+                    <div class="degree">BA in Chemistry, 2011</div>
+                    <div class="institution">University Name</div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="project-grid">
+            <div class="project-card fade-in">
+                <div class="project-image">📊</div>
+                <div class="project-content">
+                    <h3 class="project-title">Causal Inference for Longitudinal Data</h3>
+                    <p class="project-description">Machine learning extension of the g-formula for time-varying exposures and confounding to assess simulated interventions.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Documentation</a>
+                        <a href="#" class="project-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image">🌐</div>
+                <div class="project-content">
+                    <h3 class="project-title">Leveraging NHANES</h3>
+                    <p class="project-description">Code for aggregating and analyzing multiple years of NHANES data.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Browse</a>
+                        <a href="#" class="project-link">Contribute</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications" class="publications">
+        <h2 class="section-title">Selected Publications</h2>
+
+        <article class="publication-item fade-in">
+            <h3 class="pub-title">Urinary Metal Levels and Coronary Artery Calcification: Longitudinal Evidence in the Multi-Ethnic Study of Atherosclerosis</h3>
+            <div class="pub-authors">McGraw, Schilling, Glabonjat et al.</div>
+            <div class="pub-venue">Journal of the American College of Cardiology - JACC, 2024</div>
+            <div class="pub-links">
+                <a href="#" class="pub-link">PDF</a>
+                <a href="#" class="pub-link">DOI</a>  #10.1016/j.jacc.2024.07.020
+            </div>
+
+            
+        <article class="publication-item fade-in">
+            <h3 class="pub-title">PFAS and cardiovascular risk : The effects of exposure to perfluoroalkyl and polyfluoroalkyl substances on cardiovascular health</h3>
+            <div class="pub-authors">Pichler, Adlbrecht, Weber, McGraw</div>
+            <div class="pub-venue">Central European Journal of Medicine, 2025</div>
+            <div class="pub-links">
+                <a href="#" class="pub-link">PDF</a>
+                <a href="#" class="pub-link">DOI</a>  #10.1007/s00508-025-02659-8
+            </div>
+        </article>
+            
+        </article>
+        <article class="publication-item fade-in">
+            <h3 class="pub-title">Cannabis products and trends in a cohort of young adults: The VapeScan longitudinal study</h3>
+            <div class="pub-authors">McGraw, Oelsner, Lolacono et al.</div>
+            <div class="pub-venue">Tobacco Induced Diseases, 2025</div>
+            <div class="pub-links">
+                <a href="#" class="pub-link">PDF</a>
+                <a href="#" class="pub-link">DOI</a>  #10.18332/tid/210320
+            </div>
+        </article>
+
+        <article class="publication-item fade-in">
+            <h3 class="pub-title">Exposure to Volatile Organic Compounds and Blood Pressure in NHANES 2011 to 2018</h3>
+            <div class="pub-authors">McGraw, Domingo-Relloso, Riggs et al.</div>
+            <div class="pub-venue">AHypertension, 2025</div>
+            <div class="pub-links">
+                <a href="#" class="pub-link">PDF</a>
+                <a href="#" class="pub-link">DOI</a> #10.1161/HYPERTENSIONAHA
+            </div>
+        </article>
+
+        <article class="publication-item fade-in">
+            <h3 class="pub-title">Development and demonstration of a data visualization platform of short-term guidelines for ambient air levels of benzene during disaster response in Houston, Texas</h3>
+            <div class="pub-authors">Danforth, Portier, Ensor, Hopkins, Evans, Quist, McGraw, Craft</div>
+            <div class="pub-venue">Integrated Environmental Assessment and Management, 2024</div>
+            <div class="pub-links">
+                <a href="#" class="pub-link">PDF</a>
+                <a href="#" class="pub-link">DOI</a> #10.1002/ieam.4814
+            </div>
+        </article>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#">Twitter</a>
+                <a href="#">GitHub</a>
+                <a href="#">Google Scholar</a>
+                <a href="#">Email</a>
+            </div>
+            <div class="copyright">
+                © 2026 Your Name. This work is licensed under CC BY SA 4.0
+            </div>
+        </div>
+    </footer>
 
     <script>
-        function toggleMenu() {
-            var menu = document.getElementById("menu");
-            menu.style.display = menu.style.display === "block" ? "none" : "block";
-        }
-    </script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-    <div class="footer">
-        <!-- Professional profile links at the bottom -->
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="research.html">Research</a>
-        <a href="projects.html">Projects</a>
-        <a href="cv.html">CV</a>
-        <a href="contact.html">Contact</a>
-    </div>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add stagger effect to project cards
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach((card, index) => {
+            card.style.animationDelay = `${0.6 + index * 0.1}s`;
+        });
+    </script>
 </body>
 </html>
